@@ -3,13 +3,17 @@
 
 <head>
   @include('partials.head')
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   @livewireStyles
 </head>
 
-{{ $slot }}
+<body>
 
-@livewireScripts
+  @yield('header')
+  {{ $slot }}
+  @yield('footer')
+
+  @livewireScripts
+</body>
 
 </html>
