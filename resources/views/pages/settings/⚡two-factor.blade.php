@@ -155,24 +155,24 @@ new class extends Component {
     {
         if ($this->twoFactorEnabled) {
             return [
-                'title' => __('Two-Factor Authentication Enabled'),
-                'description' => __('Two-factor authentication is now enabled. Scan the QR code or enter the setup key in your authenticator app.'),
-                'buttonText' => __('Close'),
+                'title' => __('Двухфакторная аутентификация включена'),
+                'description' => __('Двухфакторная аутентификация включена. Отсканируйте QR-код или введите ключ настройки в своем приложении для аутентификации.'),
+                'buttonText' => __('Закрыть'),
             ];
         }
 
         if ($this->showVerificationStep) {
             return [
-                'title' => __('Verify Authentication Code'),
-                'description' => __('Enter the 6-digit code from your authenticator app.'),
-                'buttonText' => __('Continue'),
+                'title' => __('Проверка кода двухфакторки'),
+                'description' => __('Введите 6-значный код из вашего приложения для проверки подлинности.'),
+                'buttonText' => __('Продолжить'),
             ];
         }
 
         return [
-            'title' => __('Enable Two-Factor Authentication'),
-            'description' => __('To finish enabling two-factor authentication, scan the QR code or enter the setup key in your authenticator app.'),
-            'buttonText' => __('Continue'),
+            'title' => __('Включение двухфакторноей аутентификации'),
+            'description' => __('Чтобы завершить включение двухфакторной аутентификации, отсканируйте QR-код или введите ключ настройки в вашем приложении для проверки подлинности.'),
+            'buttonText' => __('Дальше'),
         ];
     }
 } ?>
@@ -183,18 +183,18 @@ new class extends Component {
     <flux:heading class="sr-only">{{ __('Two-Factor Authentication Settings') }}</flux:heading>
 
     <x-pages::settings.layout
-        :heading="__('Two Factor Authentication')"
-        :subheading="__('Manage your two-factor authentication settings')"
+        :heading="__('Двухфакторная аутентификация')"
+        :subheading="__('Управляйте настройками двухфакторной аутентификации')"
     >
         <div class="flex flex-col w-full mx-auto space-y-6 text-sm" wire:cloak>
             @if ($twoFactorEnabled)
                 <div class="space-y-4">
                     <div class="flex items-center gap-3">
-                        <flux:badge color="green">{{ __('Enabled') }}</flux:badge>
+                        <flux:badge color="green">{{ __('Включена') }}</flux:badge>
                     </div>
 
                     <flux:text>
-                        {{ __('With two-factor authentication enabled, you will be prompted for a secure, random pin during login, which you can retrieve from the TOTP-supported application on your phone.') }}
+                        {{ __('При включенной двухфакторной аутентификации при входе в систему вам будет предложено ввести безопасный случайный pin-код, который вы можете получить из приложения на вашем телефоне с поддержкой TOTP.') }}
                     </flux:text>
 
                     <livewire:pages::settings.two-factor.recovery-codes :$requiresConfirmation />
@@ -206,18 +206,18 @@ new class extends Component {
                             icon:variant="outline"
                             wire:click="disable"
                         >
-                            {{ __('Disable 2FA') }}
+                            {{ __('Выключить 2FA') }}
                         </flux:button>
                     </div>
                 </div>
             @else
                 <div class="space-y-4">
                     <div class="flex items-center gap-3">
-                        <flux:badge color="red">{{ __('Disabled') }}</flux:badge>
+                        <flux:badge color="red">{{ __('Выключено') }}</flux:badge>
                     </div>
 
                     <flux:text variant="subtle">
-                        {{ __('When you enable two-factor authentication, you will be prompted for a secure pin during login. This pin can be retrieved from a TOTP-supported application on your phone.') }}
+                        {{ __('Если вы включите двухфакторную аутентификацию, вам будет предложено ввести безопасный pin-код при входе в систему. Этот pin-код можно получить из приложения на вашем телефоне, поддерживающего TOTP.') }}
                     </flux:text>
 
                     <flux:button
@@ -226,7 +226,7 @@ new class extends Component {
                         icon:variant="outline"
                         wire:click="enable"
                     >
-                        {{ __('Enable 2FA') }}
+                        {{ __('Включить 2FA') }}
                     </flux:button>
                 </div>
             @endif
@@ -284,7 +284,7 @@ new class extends Component {
                             class="flex-1"
                             wire:click="resetVerification"
                         >
-                            {{ __('Back') }}
+                            {{ __('Назад') }}
                         </flux:button>
 
                         <flux:button
@@ -293,7 +293,7 @@ new class extends Component {
                             wire:click="confirmTwoFactor"
                             x-bind:disabled="$wire.code.length < 6"
                         >
-                            {{ __('Confirm') }}
+                            {{ __('Подтвердить') }}
                         </flux:button>
                     </div>
                 </div>
@@ -336,7 +336,7 @@ new class extends Component {
                     <div class="relative flex items-center justify-center w-full">
                         <div class="absolute inset-0 w-full h-px top-1/2 bg-stone-200 dark:bg-stone-600"></div>
                         <span class="relative px-2 text-sm bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400">
-                            {{ __('or, enter the code manually') }}
+                            {{ __('или введите код вручную') }}
                         </span>
                     </div>
 
